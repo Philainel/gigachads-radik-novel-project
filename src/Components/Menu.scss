@@ -1,0 +1,44 @@
+.menu {
+	background: url('../assets/MainMenuBackground.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+
+	.buttons {
+		border-radius: 0 3.75rem;
+		border: 1px solid #8F8F8F;
+		background: rgba(217, 217, 217, 0.80);
+		box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.25);
+		position: absolute;
+		top: 45%;
+		bottom: 5%;
+		left: 76%;
+		right: 3%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem 0;
+
+		.button {
+			color: #2B2B2B;
+			text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+			font-style: italic;
+			font-weight: 500;
+			line-height: normal;
+			font-size: 2em;
+			font-family: Montserrat sans-serif;
+			word-wrap: normal;
+			transition: color .1s ease-in-out;
+			cursor: default;
+			&:hover {
+				color: #FFEFEF;
+			}
+		}
+	}
+
+}
