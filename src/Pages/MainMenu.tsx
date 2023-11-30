@@ -1,6 +1,6 @@
-import './Menu.scss'
+import './MainMenu.scss'
 
-function Menu() {
+function MainMenu() {
 	return (
 		<div className="menu">
 			<div className="buttons">
@@ -16,4 +16,4 @@ function Menu() {
 	)
 }
 
-export default Menu
+export default MainMenu

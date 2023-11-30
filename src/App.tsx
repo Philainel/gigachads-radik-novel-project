@@ -1,26 +1,28 @@
-import {screens} from "./Types.ts";
-import {useState} from "react";
-import Menu from "./Components/Menu.tsx";
-import Say from "./Components/Say.tsx";
+import {screens} from "./Types";
+import MainMenu from "./Pages/MainMenu.tsx";
+import {useStorage} from "./GameData/storage.ts";
+import Game from "./Pages/Game.tsx";
+import {ReactElement} from "react";
 
 function App() {
-	let [screen, _] = useState<screens>(screens.say)
+	let [screen, _] = useStorage("screen", "game")
 
-	return(
+	function getComponent(screen: screens) {
+
+		let comps: {[key: string]: () => ReactElement} = {
+			"main": MainMenu,
+			"game": Game
+		}
+
+		return comps[screen as string] || MainMenu
+	}
+
+	return (
 		<>
-			{getComponent(screen)()}
+			{getComponent(screen as screens)()}
 		</>
 	);
 }
 
-function getComponent(screen: screens) {
-	switch (screen) {
-		case screens.say:
-			return Say;
-		case screens.mainMenu:
-		default:
-			return Menu;
-	}
-}
 
 export default App;

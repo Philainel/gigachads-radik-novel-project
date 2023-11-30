@@ -1,24 +1,24 @@
-import './Say.scss'
+import './SayLayout.scss'
+import {LayoutProps} from "../Types/Props.ts";
+import {SayStatement} from "../Types/SayStatement.ts";
 
-function Say() {
+function SayLayout({onClick, scriptable}: LayoutProps) {
 	let buttons = [{
 		icon: "",
 		action: () => {
 		},
 	}]
-	let statement = {
-		name: "Рита",
-		exp: "Привет! Lorem ipsum dolor sit amet, consectetur adipiscing"
-	}
+	let say = scriptable as SayStatement
+
 	return (
-		<div className="say">
+		<div className="say" onClick={() => onClick("0")}>
 			<img src="/Rita.png" alt="" className="img center"/>
 			<div className="phrase">
 				<div className="author">
-					{statement.name}
+					{say.author?.name}
 				</div>
 				<div className="text">
-					{statement.exp}
+					{say.expression}
 				</div>
 				<div className="buttons">
 					{buttons.map(b => <div className="button" key={b.icon}>{b.icon}</div>)}
@@ -28,4 +28,4 @@ function Say() {
 	)
 }
 
-export default Say
+export default SayLayout
