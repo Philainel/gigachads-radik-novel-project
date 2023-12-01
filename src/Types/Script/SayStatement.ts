@@ -1,4 +1,4 @@
-import {IScriptable} from "./Interfaces/IScriptable.ts";
+import {IScriptable} from "./IScriptable.ts";
 
 export class SayStatement implements IScriptable {
 	public readonly author: { name: string } | undefined

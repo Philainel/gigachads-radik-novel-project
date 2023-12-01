@@ -1,5 +1,5 @@
-import {SayStatement} from "../Types/SayStatement.ts";
-import Script from "../Types/Script.ts";
+import {SayStatement} from "../Types/Script/SayStatement.ts";
+import Script from "../Types/Script";
 
 export default {
 	"start": new Script([

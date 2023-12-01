@@ -1,34 +1,50 @@
 import SayLayout from "../Components/SayLayout.tsx";
-import {useStorage} from "../GameData/storage.ts";
-import {ReactElement, useState} from "react";
+import {ReactElement} from "react";
 import {layouts} from "../Types";
 import {LayoutProps} from "../Types/Props.ts";
-import {IScriptable} from "../Types/Interfaces/IScriptable.ts";
 import Script from "../Script";
+import {useDispatch, useSelector} from "react-redux";
+import {nextStep, selectStep} from "../Store/step.ts";
+import {AppDispatch} from "../Store";
+import FinalLayout from "../Components/FinalLayout.tsx";
+import {setScreen} from "../Store/screen.ts";
+import {selectLayout, setLayout} from "../Store/layout.ts";
 
 function Game() {
-	let [layout, _] = useStorage("layout", "say")
-	let [scriptable, setScriptable] = useState<IScriptable>(Script.start.next())
+	// let [layout, setLayout] = useState<layouts>("say");
+	let layout = useSelector(selectLayout)
+	let step = useSelector(selectStep)
+	let dispatch: AppDispatch = useDispatch()
 
 	function getLayout(layout: layouts) {
 		let comps: { [key: string]: (data: LayoutProps) => ReactElement } = {
-			"say": SayLayout
+			"say": SayLayout,
+			"final": FinalLayout
 		}
 
 		return comps[layout as string] || SayLayout
 	}
 
 	function onClick(id: string) {
-		if (id == "0") {
-			console.log("SCRIPT TO NEXT STAGE")
-			setScriptable(Script.start.next())
-		}
 		console.log(id)
+		if (id == "0") {
+			if (!Script.start.exists(step + 1)) {
+				console.log("SCRIPT ENDED.")
+				dispatch(setLayout("final"))
+				return
+			}
+			console.log("SCRIPT TO NEXT STAGE")
+			dispatch(nextStep())
+		}
+		if (id == "-1") {
+			console.log("GAME FINISHED")
+			dispatch(setScreen("main"))
+		}
 	}
 
 	return (
 		<>
-			{getLayout(layout as layouts)({onClick, scriptable})}
+			{getLayout(layout as layouts)({onClick, scriptable: Script.start.get(step)})}
 		</>
 	)
 }

@@ -1,4 +1,4 @@
-import {IScriptable} from "./Interfaces/IScriptable.ts";
+import {IScriptable} from "./Script/IScriptable.ts";
 
 export type LayoutProps = {
 	onClick: (id: string) => any,

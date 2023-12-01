@@ -1,6 +1,6 @@
 import './SayLayout.scss'
 import {LayoutProps} from "../Types/Props.ts";
-import {SayStatement} from "../Types/SayStatement.ts";
+import {SayStatement} from "../Types/Script/SayStatement.ts";
 
 function SayLayout({onClick, scriptable}: LayoutProps) {
 	let buttons = [{
@@ -14,9 +14,9 @@ function SayLayout({onClick, scriptable}: LayoutProps) {
 		<div className="say" onClick={() => onClick("0")}>
 			<img src="/Rita.png" alt="" className="img center"/>
 			<div className="phrase">
-				<div className="author">
-					{say.author?.name}
-				</div>
+				{say.author && <div className="author">
+					{say.author.name}
+				</div>}
 				<div className="text">
 					{say.expression}
 				</div>
