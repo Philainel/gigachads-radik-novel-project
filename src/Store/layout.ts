@@ -11,7 +11,7 @@ const initialState: LayoutSlice = {
 }
 
 const layoutSlice = createSlice({
-	name: 'screen',
+	name: 'layout',
 	initialState,
 	reducers: {
 		setLayout: (state, action: PayloadAction<layouts>) => {
@@ -24,5 +24,5 @@ const layoutSlice = createSlice({
 })
 
 export const {setLayout, resetLayout} = layoutSlice.actions
-export const selectLayout = (state: RootState) => state.screen.value
+export const selectLayout = (state: RootState) => state.layout.value
 export default layoutSlice.reducer

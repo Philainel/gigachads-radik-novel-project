@@ -1,16 +1,7 @@
 import {IScriptable} from "./Script/IScriptable.ts";
+import {actions} from "./index.ts";
 
 export type LayoutProps = {
-	onClick: (id: string) => any,
+	onClick: (action: actions) => any,
 	scriptable: IScriptable
-}
-
-export type SayStatement = LayoutProps & {
-	author: {
-		name: string | undefined,
-	},
-	expression: string,
-}
-export enum screenToProps {
-
 }

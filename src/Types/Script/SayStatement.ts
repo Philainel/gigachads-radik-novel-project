@@ -1,6 +1,6 @@
 import {IScriptable} from "./IScriptable.ts";
 
-export class SayStatement implements IScriptable {
+export default class SayStatement implements IScriptable {
 	public readonly author: { name: string } | undefined
 	public readonly expression: string | undefined
 
