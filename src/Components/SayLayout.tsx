@@ -21,19 +21,18 @@ function SayLayout({onClick, scriptable}: LayoutProps) {
 		say = scriptable as SayStatement
 	} else if (scriptable instanceof ShowStatement) {
 		onClick("next")
-		dispatch(addCharacter(scriptable.image))
+		dispatch(addCharacter({file: scriptable.image, position: scriptable.position}))
 	} else if(scriptable instanceof HideStatement) {
 		onClick("next")
-		dispatch(removeCharacter(scriptable.image))
+		dispatch(removeCharacter({file: scriptable.image, position: scriptable.position}))
 	}
 	// let [expression, setExpression] = useState("")
 
 	return (
 		<div className="say" onClick={() => onClick("next")}>
 			{characters.map(c =>
-				<img src={`/${c}`} alt="" className="img center"/>
-			)
-			}
+				<img src={`/${c.file}`} alt="" className="img center"/>
+			)}
 			{(say != null) && <div className="phrase">
 				{say.author && (say.author.name != "" && say.author.name != undefined) && <div className="author">
 					{say.author.name}

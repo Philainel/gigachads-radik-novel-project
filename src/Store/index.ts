@@ -4,10 +4,11 @@ import screen from "./screen.ts";
 import layout from "./layout.ts";
 import script from "./script.ts";
 import characters from "./characters.ts";
+import background from "./background.ts";
 
 const store = configureStore({
 	reducer: {
-		step, screen, layout, script, characters
+		step, screen, layout, script, characters, background
 	}
 })
 
