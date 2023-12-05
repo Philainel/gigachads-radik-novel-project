@@ -4,6 +4,8 @@ import {AppDispatch} from "../Store";
 import {setScreen} from "../Store/screen.ts";
 import {resetStep} from "../Store/step.ts";
 import {resetLayout} from "../Store/layout.ts";
+import {resetCharacters} from "../Store/characters.ts";
+import {removeBackground} from "../Store/background.ts";
 
 function MainMenu() {
 	let dispatch: AppDispatch = useDispatch()
@@ -12,6 +14,8 @@ function MainMenu() {
 		dispatch(resetStep())
 		dispatch(resetLayout())
 		dispatch(setScreen("game"))
+		dispatch(resetCharacters())
+		dispatch(removeBackground())
 	}
 
 	return (

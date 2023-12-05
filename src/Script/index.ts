@@ -1,9 +1,10 @@
 import Script from "../Types/Script";
-import {Hide, Say, Show} from "../Types/Script/schortcut.ts";
+import {Back, Hide, Say, Show} from "../Types/Script/schortcut.ts";
 
 export default {
 	start: new Script([
 		Say("", "вот я и тут"),
+		Back("WindowBackground.png"),
 		Show("Rita.png"),
 		Say("Рита", "Привет"),
 		Say("", "Привет"),

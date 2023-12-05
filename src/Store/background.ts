@@ -17,7 +17,7 @@ const backgroundSlice = createSlice({
 			state.value = action.payload
 		},
 		removeBackground: (state) => {
-			state.value = "#000"
+			state.value = initialState.value
 		}
 	}
 })
