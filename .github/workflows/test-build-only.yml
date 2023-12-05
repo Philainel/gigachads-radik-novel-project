@@ -35,8 +35,8 @@ jobs:
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload Gzip Artifact
-        uses: nmerget/upload-gzip-artifact@v1.0.0
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.platform }}
           path: src-tauri/target/release/bundle
