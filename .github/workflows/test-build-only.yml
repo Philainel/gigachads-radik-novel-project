@@ -35,3 +35,10 @@ jobs:
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: ${{ matrix.platform }} # optional, default is artifact
+          path: src-tauri/target/release/bundle/appimage/untitled_0.0.0_amd64.AppImage
+          warn: No File Found
+          
