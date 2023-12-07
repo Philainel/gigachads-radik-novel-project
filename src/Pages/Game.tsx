@@ -8,9 +8,11 @@ import {AppDispatch} from "../Store";
 import FinalLayout from "../Components/FinalLayout.tsx";
 import {setScreen} from "../Store/screen.ts";
 import {selectLayout, setLayout} from "../Store/layout.ts";
+import useSave from "../GameData/useSave.ts";
 
 function Game() {
 	// let [layout, setLayout] = useState<layouts>("say");
+	useSave()
 	let layout = useSelector(selectLayout)
 	let step = useSelector(selectStep)
 	let dispatch: AppDispatch = useDispatch()

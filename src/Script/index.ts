@@ -4,7 +4,7 @@ import {Back, Hide, Say, Show} from "../Types/Script/schortcut.ts";
 export default {
 	start: new Script([
 		Say("", "вот я и тут"),
-		Back("WindowBackground.png"),
+		Back("MainMenuBackground.png"),
 		Show("Rita.png"),
 		Say("Рита", "Привет"),
 		Say("", "Привет"),

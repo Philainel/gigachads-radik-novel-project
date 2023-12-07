@@ -6,12 +6,21 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "untitled",
-    "version": "0.0.0"
+    "productName": "Gigachads Radik Novel Project",
+    "version": "0.0.1"
   },
   "tauri": {
     "allowlist": {
       "all": false,
+      "fs": {
+        "scope": {
+          "allow": ["$APPDATA/**/*"]
+        },
+        "all": true
+      },
+      "path":{
+        "all": true
+      },
       "shell": {
         "all": false,
         "open": true
@@ -36,7 +45,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "RenPy Gigachads Radik Novel Project",
+        "title": "Gigachads Radik Novel Project",
         "maximized":true,
         "width": 720,
         "height": 1280,
