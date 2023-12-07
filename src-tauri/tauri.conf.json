@@ -14,7 +14,7 @@
       "all": false,
       "fs": {
         "scope": {
-          "allow": ["**"]
+          "allow": ["*"]
         },
         "all": true
       },
