@@ -14,7 +14,7 @@
       "all": false,
       "fs": {
         "scope": {
-          "allow": ["$APPDATA/**/*"]
+          "allow": ["**"]
         },
         "all": true
       },
