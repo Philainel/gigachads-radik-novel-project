@@ -5,6 +5,7 @@ import {setScreen} from "../Store/screen.ts";
 import {resetCharacters} from "../Store/characters.ts";
 import {removeBackground} from "../Store/background.ts";
 import {dispatchFromSave, SaveData} from "./transformData.ts";
+import {setState} from "../Store/state.ts";
 
 export default function startGame(dispatch: AppDispatch, save: string = "") {
 	const fromSave = save != "";
@@ -24,5 +25,6 @@ export default function startGame(dispatch: AppDispatch, save: string = "") {
 			layout: saveData.layout
 		})
 	}
+	dispatch(setState("play"))
 	dispatch(setScreen("game"))
 }

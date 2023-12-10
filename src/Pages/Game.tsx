@@ -9,18 +9,20 @@ import FinalLayout from "../Components/FinalLayout.tsx";
 import {setScreen} from "../Store/screen.ts";
 import {selectLayout, setLayout} from "../Store/layout.ts";
 import useSave from "../GameData/useSave.ts";
+import {selectScript} from "../Store/script.ts";
 
 function Game() {
 	// let [layout, setLayout] = useState<layouts>("say");
 	useSave()
 	let layout = useSelector(selectLayout)
 	let step = useSelector(selectStep)
+	let script = useSelector(selectScript)
 	let dispatch: AppDispatch = useDispatch()
 
 	function getLayout(layout: layouts) {
 		let comps: { [key: string]: ReactElement } = {
-			"say": SayLayout({onClick, scriptable: Script.start.get(step)}),
-			"final": FinalLayout({onClick, scriptable: Script.start.get(step)})
+			"say": SayLayout({onClick, scriptable: Script.get(script).get(step)}),
+			"final": FinalLayout({onClick, scriptable: Script.get(script).get(step)})
 		}
 
 		return comps[layout as string] || SayLayout
@@ -29,7 +31,7 @@ function Game() {
 	function onClick(action: actions) {
 		console.log(action)
 		if (action == "next") {
-			if (!Script.start.exists(step + 1)) {
+			if (!Script.get(script).exists(step + 1)) {
 				console.log(step)
 				console.log("SCRIPT ENDED.")
 				dispatch(setLayout("final"))
