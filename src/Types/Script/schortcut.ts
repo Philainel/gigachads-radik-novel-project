@@ -7,8 +7,11 @@ import {RootState} from "../../Store";
 import IfStatement from "./IfStatement.ts";
 import ElseStatement from "./ElseStatement.ts";
 import DoneStatement from "./DoneStatement.ts";
+import {choiceOption} from "../index.ts";
+import ChoiceStatement from "./ChoiceStatement.ts";
 
 export const Say = (name: string, expression: string) => new SayStatement(name, expression)
+export const Choice = (question: string, key: string, options: choiceOption[]) => new ChoiceStatement(question, key, options)
 export const Show = (name: string, position: "center" | "left" | "right" = "center") => new ShowStatement(name, position)
 export const Hide = (name: string, position: "center" | "left" | "right" = "center") => new HideStatement(name, position)
 export const Switch = (script: string) => new SwitchStatement(script)

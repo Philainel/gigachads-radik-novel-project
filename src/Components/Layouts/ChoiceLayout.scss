@@ -1,0 +1,42 @@
+.say {
+	.choice {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		display: flex;
+
+		.options {
+			margin-left: auto;
+			margin-right: auto;
+			display: flex;
+			flex-direction: column;
+			min-width: 50%;
+			min-height: 100%;
+			justify-content: center;
+			align-items: stretch;
+			gap: 1em;
+
+			.option {
+				border-radius: 0 10px;
+				border: 5px solid rgba(255, 163, 163, 0.49);
+				background: linear-gradient(128deg, #E1E1E1 -43.09%, #FFA3A3 105.32%);
+				box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+				display: flex;
+				justify-content: center;
+				align-items: baseline;
+				-webkit-user-select: none;
+				user-select: none;
+				cursor: default;
+
+				:hover {
+					border-radius: 0 10px;
+					border: 5px solid #EEE;
+					background: #F6F6F6;
+					box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+				}
+			}
+		}
+	}
+}

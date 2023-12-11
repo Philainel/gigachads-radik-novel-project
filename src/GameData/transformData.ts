@@ -9,14 +9,18 @@ export interface SaveData {
 	background: string,
 	layout: layouts,
 	step: number,
-	characters: characterPosition[]
+	characters: characterPosition[],
+	script: string,
+	ifState: "none" | "skip"
 }
 export function stateToSave(state: RootState) {
 	const data: SaveData = {
 		background: state.background.value,
 		layout: state.layout.value,
 		step: state.step.value,
-		characters: state.characters.value
+		characters: state.characters.value,
+		script: state.script.value,
+		ifState: state.ifState.value
 	}
 	return data
 }
