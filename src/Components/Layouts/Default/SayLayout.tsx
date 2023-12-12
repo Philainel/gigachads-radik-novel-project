@@ -1,9 +1,9 @@
 import './SayLayout.scss'
-import {LayoutProps} from "../../Types/Props.ts";
-import SayStatement from "../../Types/Script/SayStatement.ts";
+import {LayoutProps} from "../../../Types/Props.ts";
+import SayStatement from "../../../Types/Script/SayStatement.ts";
 import {useSelector} from "react-redux";
-import {selectCharacters} from "../../Store/characters.ts";
-import {selectBackground} from "../../Store/background.ts";
+import {selectCharacters} from "../../../Store/characters.ts";
+import {selectBackground} from "../../../Store/background.ts";
 import {MouseEventHandler} from "react";
 
 // import {useState} from "react";

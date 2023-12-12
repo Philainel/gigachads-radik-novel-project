@@ -1,8 +1,8 @@
 import {useSelector} from "react-redux";
-import {selectBackground} from "../../Store/background.ts";
-import {selectCharacters} from "../../Store/characters.ts";
-import {LayoutProps} from "../../Types/Props.ts";
-import ChoiceStatement from "../../Types/Script/ChoiceStatement.ts";
+import {selectBackground} from "../../../Store/background.ts";
+import {selectCharacters} from "../../../Store/characters.ts";
+import {LayoutProps} from "../../../Types/Props.ts";
+import ChoiceStatement from "../../../Types/Script/ChoiceStatement.ts";
 import './ChoiceLayout.scss'
 
 function ChoiceLayout({onClick, scriptable}: LayoutProps) {

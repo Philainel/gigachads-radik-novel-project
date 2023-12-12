@@ -1,4 +1,4 @@
-import {LayoutProps} from "../../Types/Props.ts";
+import {LayoutProps} from "../../../Types/Props.ts";
 import "./FinalLayout.scss"
 function FinalLayout({onClick}: LayoutProps) {
 	return(

@@ -7,10 +7,11 @@ import characters from "./characters.ts";
 import background from "./background.ts";
 import state from "./state.ts";
 import ifState from "./ifState.ts";
+import layoutGroup from "./layoutGroup.ts";
 
 const store = configureStore({
 	reducer: {
-		step, screen, layout, script, characters, background, state, ifState
+		step, screen, layout, script, characters, background, state, ifState, layoutGroup
 	}
 })
 
