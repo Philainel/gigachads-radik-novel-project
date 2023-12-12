@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>splashscreen</title>
+    <style>
+        body {
+            background-color: #1E1E1E;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left:0;
+            right: 0;
+        }
+        .content {
+            margin: auto;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: repeat(1, auto);
+        }
+        .content > .image {
+            display: flex;
+            justify-content: center;
+        }
+        .content > .image > img {
+            max-width: 70%;
+            /*max-height: 70%;*/
+        }
+        .title {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: space-evenly;
+            color: #D2DFE6;
+        }
+        .title > .text {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            text-align: center;
+        }
+        .loader-box {
+            display: flex;
+            justify-content: center;
+        }
+        .loader {
+            border: 16px solid transparent; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 5rem;
+            height: 5rem;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="image">
+                <img src="/icon-sasha.png" alt="">
+            </div>
+            <div class="title">
+                <div class="text">
+                    <h2>Gigachads Radik<br>Novel Project</h2>
+                    <h4>Загрузка</h4>
+                </div>
+                <div class="loader-box">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -50,7 +50,17 @@
         "width": 720,
         "height": 1280,
         "minWidth": 854,
-        "minHeight": 480
+        "minHeight": 480,
+        "visible": false
+      },
+      {
+        "width": 600,
+        "height": 375,
+        "decorations": false,
+        "url": "splashscreen.html",
+        "label": "splashscreen",
+        "closable": false,
+        "resizable": false
       }
     ]
   }
