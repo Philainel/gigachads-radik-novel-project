@@ -24,6 +24,9 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "close": true
       }
     },
     "bundle": {
@@ -43,7 +46,7 @@
     },
     "windows": [
       {
-        "fullscreen": false,
+        "fullscreen": true,
         "resizable": true,
         "title": "Gigachads Radik Novel Project",
         "maximized":true,

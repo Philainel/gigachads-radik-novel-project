@@ -10,6 +10,7 @@ import DoneStatement from "./DoneStatement.ts";
 import {choiceOption} from "../index.ts";
 import ChoiceStatement from "./ChoiceStatement.ts";
 import SetLayoutGroupStatement from "./SetLayoutGroupStatement.ts";
+import SetFlagStatement from "./SetFlagStatement.ts";
 
 export const Say = (name: string, expression: string) => new SayStatement(name, expression)
 export const Choice = (question: string, key: string, options: choiceOption[]) => new ChoiceStatement(question, key, options)
@@ -19,6 +20,7 @@ export const Switch = (script: string) => new SwitchStatement(script)
 export const Back = (image: string = "") => new SetBackgroundStatement(image)
 
 export const Group = (group: string = "default") => new SetLayoutGroupStatement(group)
+export const Flag = (key: string, value: string) => new SetFlagStatement(key, value)
 
 export const If = (condition: (state: RootState) => boolean) => new IfStatement(condition)
 export const Else = () => new ElseStatement()

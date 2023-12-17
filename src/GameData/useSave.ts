@@ -13,7 +13,7 @@ export default function useSave(frequency: number = 1000 * 60) {
 			await SaveToFile(`Autosave`, JSON.stringify(stateToSave(state.getState() as RootState)))
 		}, frequency)
 		return () => clearInterval(i)
-	})
+	}, [])
 	return async (name: string = "") => {
 		console.log(`Saving in file saves/${name}.grnp`)
 		console.log(state.getState())

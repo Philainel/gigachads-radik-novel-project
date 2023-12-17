@@ -8,7 +8,7 @@ import {selectLayout, setLayout} from "../Store/layout.ts";
 import useSave from "../GameData/useSave.ts";
 import {selectScript} from "../Store/script.ts";
 import {selectIfState} from "../Store/ifState.ts";
-import {processScriptable} from "../GameData/ProcessScriptable.tsx";
+import {processScriptable} from "../GameData/ProcessScriptable.ts";
 import GetLayoutInGroup from "../Components/Layouts";
 import {selectLayoutGroup} from "../Store/layoutGroup.ts";
 

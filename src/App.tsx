@@ -4,17 +4,19 @@ import Game from "./Pages/Game.tsx";
 import {useEffect, ReactElement} from "react";
 import {useSelector} from "react-redux";
 import {selectScreen} from "./Store/screen.ts";
-import { invoke } from '@tauri-apps/api/tauri';
+import {invoke} from '@tauri-apps/api/tauri';
+import Overlay from "./Components/Overlay";
 
 function App() {
 	let screen = useSelector(selectScreen)
 
 	useEffect(() => {
-		invoke('close_splashscreen')
+		invoke('close_splashscreen').catch(console.error)
 	}, [])
+
 	function getComponent(screen: screens) {
 
-		let comps: {[key: string]: ReactElement} = {
+		let comps: { [key: string]: ReactElement } = {
 			"main": MainMenu(),
 			"game": Game()
 		}
@@ -25,6 +27,7 @@ function App() {
 	return (
 		<>
 			{getComponent(screen as screens)}
+			<Overlay/>
 		</>
 	);
 }

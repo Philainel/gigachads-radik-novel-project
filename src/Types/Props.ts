@@ -5,3 +5,6 @@ export type LayoutProps = {
 	onClick: (action: actions) => any,
 	scriptable: IScriptable
 }
+export type OverlayProps = {
+	onClick: () => any
+}

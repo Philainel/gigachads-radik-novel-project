@@ -3,9 +3,12 @@ import {ReactElement} from "react";
 import Default from "./Default";
 import {layouts} from "../../Types";
 
+// @ts-ignore
 export default function GetLayoutInGroup(layoutGroup: string, layout: layouts, data: LayoutProps): ReactElement {
+	// @ts-ignore
 	const groups: {[key: string]: {GetLayout(layout: string, data: LayoutProps): ReactElement | null}} = {
 		"default": Default
 	}
-	return groups[layoutGroup].GetLayout(layout, data) || Default.GetLayout(layout, data)
+	// return groups[layoutGroup].GetLayout(layout, data) || Default.GetLayout(layout, data)
+	return Default.GetLayout(layout, data)
 }

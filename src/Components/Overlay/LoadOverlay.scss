@@ -1,0 +1,60 @@
+.content {
+
+	padding: 4%;
+	color: lightcyan;
+
+	h1 {
+		margin: 0;
+	}
+
+	.list {
+		overflow-y: auto;
+		display: flex;
+		position: relative;
+		flex-direction: column;
+		height: 100%;
+		gap: 10px;
+		margin: 0 15px 10px 15px;
+
+		.save {
+			padding: 10px;
+			border-radius: 15px;
+			transition: background-color .2s ease-out;
+
+			> * {
+				margin: 0;
+				user-select: none;
+				-webkit-user-select: none;
+			}
+
+			&:hover {
+				background-color: #B7B7B7B8;
+			}
+		}
+	}
+
+	.loader-box {
+		display: flex;
+		justify-content: center;
+		height: 100%;
+		align-items: center;
+	}
+
+	.loader {
+		border: 16px solid transparent; /* Light grey */
+		border-top: 16px solid #3498db; /* Blue */
+		border-radius: 50%;
+		width: 5rem;
+		height: 5rem;
+		animation: spin 1.5s linear infinite;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}

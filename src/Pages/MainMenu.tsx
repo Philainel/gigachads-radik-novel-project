@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import listSaves from "../GameData/listSaves.ts";
 import readSaveFromFile from "../GameData/readSaveFromFile.ts";
 import startGame from "../GameData/startGame.ts";
+import {appWindow} from "@tauri-apps/api/window";
 
 function MainMenu() {
 	let dispatch: AppDispatch = useDispatch()
@@ -32,9 +33,8 @@ function MainMenu() {
 				<div className="button">Настройки</div>
 				<div className="button">Об игре</div>
 				<div className="button">Помощь</div>
-				<div className="button">Выйти</div>
+				<div className="button" onClick={() => appWindow.close()}>Выйти</div>
 			</div>
-
 		</div>
 	)
 }

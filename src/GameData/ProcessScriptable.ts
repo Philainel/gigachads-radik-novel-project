@@ -4,20 +4,22 @@ import SwitchStatement from "../Types/Script/SwitchStatement.ts";
 import ShowStatement from "../Types/Script/ShowStatement.ts";
 import HideStatement from "../Types/Script/HideStatement.ts";
 import SetBackgroundStatement from "../Types/Script/SetBackgroundStatement.ts";
-import {actions, ifStates, layouts} from "../Types";
-import {setIfState} from "../Store/ifState.ts";
-import {AppDispatch, RootState} from "../Store";
+import SetFlagStatement from "../Types/Script/SetFlagStatement.ts";
 import ElseStatement from "../Types/Script/ElseStatement.ts";
 import DoneStatement from "../Types/Script/DoneStatement.ts";
 import SayStatement from "../Types/Script/SayStatement.ts";
-import {setLayout} from "../Store/layout.ts";
 import ChoiceStatement from "../Types/Script/ChoiceStatement.ts";
+import {actions, ifStates, layouts} from "../Types";
+import {AppDispatch, RootState} from "../Store";
+import {setIfState} from "../Store/ifState.ts";
+import {setLayout} from "../Store/layout.ts";
 import {setStep} from "../Store/step.ts";
 import {switchScript} from "../Store/script.ts";
 import {addCharacter, removeCharacter} from "../Store/characters.ts";
 import {removeBackground, setBackground} from "../Store/background.ts";
+import {setFlag} from "../Store/flags.ts";
 
-export function processScriptable(scriptable: IScriptable | IfStatement | SwitchStatement | ShowStatement | HideStatement | SetBackgroundStatement, onClick: (action: actions) => void, dispatch: AppDispatch, store: RootState, ifState: ifStates, layout: layouts) {
+export function processScriptable(scriptable: IScriptable, onClick: (action: actions) => void, dispatch: AppDispatch, store: RootState, ifState: ifStates, layout: layouts) {
 	if (scriptable instanceof IfStatement) {
 		onClick("next")
 		dispatch(setIfState(scriptable.condition(store) ? "none" : "skip"))
@@ -29,10 +31,13 @@ export function processScriptable(scriptable: IScriptable | IfStatement | Switch
 		dispatch(setIfState("none"))
 	} else if (ifState == "skip") {
 		onClick("next")
-	} else if (scriptable instanceof SayStatement && ["final", "say"].indexOf(layout) == -1) {
-		dispatch(setLayout("say"))
-	} else if (scriptable instanceof ChoiceStatement && ["final", "choice"].indexOf(layout) == -1) {
-		dispatch(setLayout("choice"))
+	} else if (scriptable instanceof SayStatement) {
+		["final", "say"].indexOf(layout) == -1 && dispatch(setLayout("say"))
+	} else if (scriptable instanceof ChoiceStatement) {
+		["final", "choice"].indexOf(layout) == -1 && dispatch(setLayout("choice"))
+	} else if (scriptable instanceof SetFlagStatement) {
+		onClick("next")
+		dispatch(setFlag({ key: scriptable.key, value: scriptable.value }))
 	} else if (scriptable instanceof SwitchStatement) {
 		onClick("next")
 		dispatch(setStep(-1))
@@ -47,5 +52,8 @@ export function processScriptable(scriptable: IScriptable | IfStatement | Switch
 	} else if (scriptable instanceof SetBackgroundStatement) {
 		onClick("next")
 		dispatch(scriptable.image != "" ? setBackground(scriptable.image) : removeBackground())
+	} else {
+		onClick("next")
+		console.error(new Error(`There's no procession of ${typeof scriptable} defined`), scriptable)
 	}
 }
