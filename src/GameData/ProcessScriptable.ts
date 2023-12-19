@@ -18,6 +18,8 @@ import {switchScript} from "../Store/script.ts";
 import {addCharacter, removeCharacter} from "../Store/characters.ts";
 import {removeBackground, setBackground} from "../Store/background.ts";
 import {setFlag} from "../Store/flags.ts";
+import SetLayoutGroupStatement from "../Types/Script/SetLayoutGroupStatement.ts";
+import {setLayoutGroup} from "../Store/layoutGroup.ts";
 
 export function processScriptable(scriptable: IScriptable, onClick: (action: actions) => void, dispatch: AppDispatch, store: RootState, ifState: ifStates, layout: layouts) {
 	if (scriptable instanceof IfStatement) {
@@ -35,14 +37,17 @@ export function processScriptable(scriptable: IScriptable, onClick: (action: act
 		["final", "say"].indexOf(layout) == -1 && dispatch(setLayout("say"))
 	} else if (scriptable instanceof ChoiceStatement) {
 		["final", "choice"].indexOf(layout) == -1 && dispatch(setLayout("choice"))
+	} else if (scriptable instanceof SetLayoutGroupStatement) {
+		onClick("next")
+		dispatch(setLayoutGroup(scriptable.group))
 	} else if (scriptable instanceof SetFlagStatement) {
 		onClick("next")
-		dispatch(setFlag({ key: scriptable.key, value: scriptable.value }))
+		dispatch(setFlag({key: scriptable.key, value: scriptable.value}))
 	} else if (scriptable instanceof SwitchStatement) {
-		onClick("next")
 		dispatch(setStep(-1))
 		dispatch(setIfState("none"))
 		dispatch(switchScript(scriptable.screen))
+		// onClick("next")
 	} else if (scriptable instanceof ShowStatement) {
 		onClick("next")
 		dispatch(addCharacter({file: scriptable.image, position: scriptable.position}))

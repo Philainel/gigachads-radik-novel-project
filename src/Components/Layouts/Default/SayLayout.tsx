@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import {selectCharacters} from "../../../Store/characters.ts";
 import {selectBackground} from "../../../Store/background.ts";
 import {MouseEventHandler} from "react";
+import useTypewriter from "../../Hooks/useTypewriter.ts";
 
 // import {useState} from "react";
 
@@ -40,9 +41,13 @@ function SayLayout({onClick, scriptable}: LayoutProps) {
 	}]
 	let characters = useSelector(selectCharacters)
 	let background = useSelector(selectBackground)
+
+
 	let say: SayStatement | null = null
 	if (scriptable instanceof SayStatement)
 		say = scriptable
+	let expression = useTypewriter(say?.expression || "", 10)
+
 	return (
 		<div className="say"
 			 style={{background: `${background.startsWith('#') ? background : `url('/${background}')`} no-repeat center center fixed`}}
@@ -55,7 +60,7 @@ function SayLayout({onClick, scriptable}: LayoutProps) {
 					{say.author.name}
                 </div>}
                 <div className="text">
-					{say.expression}
+					{expression}
                 </div>
                 <div className="buttons">
 					{buttons.map(b => <div className="button" key={b.icon} onClick={b.action}><i className={b.icon}/>

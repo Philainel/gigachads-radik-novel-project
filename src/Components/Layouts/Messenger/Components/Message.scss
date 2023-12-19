@@ -1,0 +1,30 @@
+.message {
+	background-color: #D9D9D9;
+	padding: .3em .7em;
+	border-radius: 0 15px 15px 0;
+	max-width: 80%;
+
+	&.start {
+		border-top-left-radius: 15px;
+		margin-top: 2px;
+	}
+
+	&.end {
+		margin-bottom: 2px;
+	}
+
+	&.own {
+		background-color: #FFA3A3;
+		border-radius: 15px 0 0 15px;
+		align-self: flex-end;
+
+		&.start {
+			border-top-right-radius: 15px;
+		}
+
+		&.end {
+			border-bottom-left-radius: 15px;
+			border-bottom-right-radius: 0;
+		}
+	}
+}

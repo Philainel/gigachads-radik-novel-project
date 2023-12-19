@@ -1,14 +1,16 @@
 import './MainMenu.scss'
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../Store";
 import {useEffect, useState} from "react";
 import listSaves from "../GameData/listSaves.ts";
 import readSaveFromFile from "../GameData/readSaveFromFile.ts";
 import startGame from "../GameData/startGame.ts";
 import {appWindow} from "@tauri-apps/api/window";
+import {selectScreen} from "../Store/screen.ts";
 
 function MainMenu() {
 	let dispatch: AppDispatch = useDispatch()
+	let screen = useSelector(selectScreen)
 	let [save, setSave] = useState("")
 	useEffect(() => {
 		listSaves().then((saves) => {
@@ -19,7 +21,7 @@ function MainMenu() {
 					setSave(save)
 				})
 		})
-	})
+	}, [screen])
 
 	function start(newGame: boolean = false) {
 		startGame(dispatch, newGame ? "" :save )

@@ -11,6 +11,7 @@ import {selectIfState} from "../Store/ifState.ts";
 import {processScriptable} from "../GameData/ProcessScriptable.ts";
 import GetLayoutInGroup from "../Components/Layouts";
 import {selectLayoutGroup} from "../Store/layoutGroup.ts";
+import {useEffect} from "react";
 
 function Game() {
 	useSave()
@@ -23,16 +24,17 @@ function Game() {
 	let dispatch: AppDispatch = useDispatch()
 	const scriptable = Script.get(script).get(step);
 
-	processScriptable(scriptable, onClick, dispatch, store.getState() as RootState, ifState, layout);
+	useEffect(() => {
+		processScriptable(Script.get(script).get(step), onClick, dispatch, store.getState() as RootState, ifState, layout);
+	}, [scriptable])
+
 
 	function onClick(action: actions) {
 		console.log(action)
 		if (action == "next") {
 			if (!Script.get(script).exists(step + 1)) {
-				console.log(step)
 				console.log("SCRIPT ENDED.")
 				dispatch(setLayout("final"))
-				console.log(layout)
 				return
 			}
 			console.log("SCRIPT TO NEXT STAGE")

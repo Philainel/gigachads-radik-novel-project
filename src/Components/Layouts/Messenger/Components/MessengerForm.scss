@@ -1,0 +1,25 @@
+.messenger-form {
+	display: flex;
+	//height: 100%;
+	//width: 100%;
+	position: absolute;
+	top: 10.5%;
+	left: 10.92%;
+	right: 10.95%;
+	bottom: 19.7%;
+	overflow: hidden;
+	justify-content: stretch;
+	background-color: #7D8DA3;
+	border-radius: 5px;
+
+	.messages {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		align-items: flex-start;
+		overflow-y: scroll;
+		overflow-anchor: auto;
+		padding: .4em;
+		width: 100%;
+	}
+}

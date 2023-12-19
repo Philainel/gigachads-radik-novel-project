@@ -1,4 +1,3 @@
-import {layouts} from "../Types";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "./index.ts";
 
@@ -14,7 +13,7 @@ const layoutGroupSlice = createSlice({
 	name: 'layoutGroup',
 	initialState,
 	reducers: {
-		setLayoutGroup: (state, action: PayloadAction<layouts>) => {
+		setLayoutGroup: (state, action: PayloadAction<string>) => {
 			state.value = action.payload
 		},
 		resetLayoutGroup: (state) => {
